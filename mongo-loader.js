@@ -3,7 +3,7 @@ const readline = require('readline');
 const mongodb = require('mongodb');
 
 const dbName = "simple-nodejs-mongodb-docker-app";
-const url = "mongodb://localhost:27017/" + dbName;
+const url = "mongodb://127.0.0.1:27017/" + dbName;
 const csvName = "classes.csv";
 
 const mongoClient = new mongodb.MongoClient(url);
