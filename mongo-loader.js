@@ -15,11 +15,11 @@ class course {
     constructor(entry, prefix, courseNumber, courseName, credits) {
         // Entry ticks up from 0 for each entry in the database; this lets us
         // do stuff like "select all entries divisible by n
-        this.dbEntry = entry;
-        this.prefix = prefix;
-        this.courseNumber = courseNumber;
-        this.courseName = courseName;
-        this.credits = credits;
+        this["db-entry"] = entry;
+        this["prefix"] = prefix;
+        this["course-number"] = courseNumber;
+        this["course-name"] = courseName;
+        this["credits"] = credits;
     }
 }
 
@@ -96,4 +96,22 @@ async function loadMongo() {
     }
 }
 
+async function queryDatabase(query) {
+    try {
+        // wait for MongoDB connection to disconnect
+        await mongoClient.connect();
+        console.log("Connected to MongoDB");
+
+        const database = mongoClient.db(dbName);
+        const coursesCollection = database.collection("courses");
+
+        return await coursesCollection.find(query).toArray();
+    } catch (e) {
+        console.log(e);
+    } finally {
+        await mongoClient.close();
+    }
+}
+
+exports.queryDatabase = queryDatabase;
 exports.loadMongo = loadMongo;
