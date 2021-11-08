@@ -34,3 +34,13 @@ Start the Node.js app with `node app.js` in the root folder of this repository.
   * `course-name`
   * `credits`
   * `sample-rate` Given an integer *n*, only select one per *n* documents.
+
+### Troubleshooting
+
+* This simple server does not use HTTPS. Use `http://localhost:3000` instead of 
+  `https://localhost:3000`.
+* If you get a MongoDB error running the code, your MongoDB service may not be running.
+  * [Starting the MongoDB service on Windows](https://stackoverflow.com/a/56354829)
+  * On macOS and Linux, use your system's service manager to start the MongoDB service. For
+    example, on Ubuntu, run `sudo service mongod start`, or on macOS with Homebrew, run
+    `brew services start mongodb-community`.
