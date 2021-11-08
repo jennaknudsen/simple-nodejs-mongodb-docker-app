@@ -42,6 +42,9 @@ router.get('/', async (req, res) => {
     console.log(JSON.stringify(mongoQuery, null, '    '));
     // get the return value from the mongoLoader using the mongoQuery object we just created and send it
     const returnValue = await mongoLoader.queryDatabase(mongoQuery);
+
+    // public API: allow calls from any IP
+    res.set('Access-Control-Allow-Origin', '*');
     res.send(returnValue)
 });
 
