@@ -4,8 +4,6 @@ const mongoLoader = require('./mongo-loader');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    // res.send(req.query);
-
     // change these depending on what the API is looking for
     const prefixKey = "prefix";
     const courseNumKey = "course-number";
@@ -13,12 +11,14 @@ router.get('/', async (req, res) => {
     const creditsKey = "credits";
     const sampleRateKey = "sample-rate";
 
+    // get the values from the api call
     const prefixValue = req.query[prefixKey];
     const courseNumValue = req.query[courseNameKey];
     const courseNameValue = req.query[courseNameKey];
     const creditsValue = req.query[creditsKey];
     const sampleRateValue = req.query[sampleRateKey];
 
+    // craft the query for the db.collection.find()
     let mongoQuery = {};
     if (prefixValue !== undefined && prefixValue !== "") {
         mongoQuery[prefixKey] = prefixValue;
@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
         mongoQuery["db-entry"] = { $mod : [modValue, 0]}
     }
 
+    // get the return value from the mongoLoader using the mongoQuery object we just created and send it
     const returnValue = await mongoLoader.queryDatabase(mongoQuery);
     res.send(returnValue)
 });

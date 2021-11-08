@@ -93,9 +93,16 @@ async function loadMongo() {
     } finally {
         // always close connection to mongo client afterwards
         await mongoClient.close();
+        console.log("Disconnected from MongoDB")
     }
 }
 
+/**
+ * Function used by the API to query MongoDB
+ *
+ * @param query The object used to query MongoDB
+ * @returns {Promise<Document[]>} The object that holds all of the return values
+ */
 async function queryDatabase(query) {
     try {
         // wait for MongoDB connection to disconnect
@@ -109,7 +116,9 @@ async function queryDatabase(query) {
     } catch (e) {
         console.log(e);
     } finally {
+        // always close connection to mongo client afterwards
         await mongoClient.close();
+        console.log("Disconnected from MongoDB")
     }
 }
 
