@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Test</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<script src="script.js"></script>
+<h3>
+    This is an API test.
+</h3>
+
+<!--<form method="get" action="http://localhost:3000/api/">-->
+<form>
+    <div>
+        <label class="input-label" for="prefix">Prefix: </label>
+        <input type="text" id="prefix" name="prefix" />
+    </div>
+    <div>
+        <label class="input-label" for="course-number">Course Number: </label>
+        <input type="text" id="course-number" name="course-number" />
+    </div>
+    <div>
+        <label class="input-label" for="course-name">Course Name: </label>
+        <input type="text" id="course-name" name="course-name" />
+    </div>
+    <div>
+        <label class="input-label" for="credits">Credits: </label>
+        <input type="text" id="credits" name="credits" />
+    </div>
+    <div>
+        <label class="input-label" for="sample-rate">Sample rate: </label>
+        <input type="text" id="sample-rate" name="sample-rate"/>
+    </div>
+    <div>
+<!--        <input type="submit" name="submit" value="Submit">-->
+        <input type="button" name="submit" value="Submit" onclick="makeApiCall()">
+        <input type="reset" name="clear" value="Clear">
+    </div>
+</form>
+
+<!-- this will hold the result div -->
+<div id="result-div">
+
+</div>
+
+</body>
+</html>

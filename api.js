@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
     // get the values from the api call
     const prefixValue = req.query[prefixKey];
-    const courseNumValue = req.query[courseNameKey];
+    const courseNumValue = req.query[courseNumKey];
     const courseNameValue = req.query[courseNameKey];
     const creditsValue = req.query[creditsKey];
     const sampleRateValue = req.query[sampleRateKey];
@@ -24,13 +24,13 @@ router.get('/', async (req, res) => {
         mongoQuery[prefixKey] = prefixValue;
     }
     if (courseNumValue !== undefined && courseNumValue !== "") {
-        mongoQuery[courseNumKey] = courseNumValue
+        mongoQuery[courseNumKey] = courseNumValue;
     }
     if (courseNameValue !== undefined && courseNameValue !== "") {
-        mongoQuery[courseNameKey] = courseNameValue
+        mongoQuery[courseNameKey] = courseNameValue;
     }
     if (creditsValue !== undefined && creditsValue !== "") {
-        mongoQuery[creditsKey] = creditsValue
+        mongoQuery[creditsKey] = creditsValue;
     }
     if (sampleRateValue !== undefined && sampleRateValue !== "") {
         let modValue = parseInt(sampleRateValue);
@@ -38,6 +38,8 @@ router.get('/', async (req, res) => {
         mongoQuery["db-entry"] = { $mod : [modValue, 0]}
     }
 
+    console.log("Attempting to make query:");
+    console.log(JSON.stringify(mongoQuery, null, '    '));
     // get the return value from the mongoLoader using the mongoQuery object we just created and send it
     const returnValue = await mongoLoader.queryDatabase(mongoQuery);
     res.send(returnValue)
