@@ -1,5 +1,6 @@
+# Node.js image
 # use alpine linux as base
-FROM alpine:latest
+FROM alpine:latest as node-img
 # install node.js
 RUN apk add --update nodejs npm
 # set the working directory in the image to /app (also creates this folder)
@@ -10,3 +11,7 @@ COPY . /app
 RUN npm install
 # run the node app
 CMD ["npm", "start"]
+
+# MongoDB image
+# use alpine linux as base
+FROM mongo:latest as mongo-img
