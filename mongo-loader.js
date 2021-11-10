@@ -12,6 +12,9 @@ const csvName = "classes.csv";
 
 const mongoClient = new mongodb.MongoClient(url);
 
+// output the hostname of whatever is running mongo
+console.log("MongoDB host: " + mongoHostName);
+
 /**
  * This class holds course information.
  */
