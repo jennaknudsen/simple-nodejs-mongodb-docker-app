@@ -12,6 +12,8 @@ services:
       - mongo-node-network
     environment:
       - DB_HOSTNAME=mongo-container
+    stdin_open: true  # docker run -i
+    tty: true         # docker run -t
   mongo:
     # just pull the Mongo image
     image: mongo:latest
@@ -23,6 +25,8 @@ services:
     # start this AFTER node img
     depends_on:
       - node
+    stdin_open: true  # docker run -i
+    tty: true         # docker run -t
 
 # connect both containers to this network
 networks:
