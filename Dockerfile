@@ -9,11 +9,8 @@ WORKDIR /app
 COPY . /app
 # install missing node packages
 RUN npm install
-# set environment variables
-ENV DB_HOSTNAME=mongo-container
 # run the node app
 CMD ["npm", "start"]
 
-# MongoDB image
-# use alpine linux as base
-FROM mongo:latest as mongo-img
+# MongoDB image -- REMOVED from dockerfile, just pulls latest anyways
+# see docker-compose.yml

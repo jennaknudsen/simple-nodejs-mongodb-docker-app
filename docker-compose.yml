@@ -1,0 +1,35 @@
+# create two images, node and mongo
+services:
+  node:
+    build:
+      context: .
+      target: node-img
+    ports:
+      - 3000:3000
+    image: node-img
+    container_name: node-container
+    networks:
+      - mongo-node-network
+    environment:
+      - DB_HOSTNAME=mongo-container
+  mongo:
+    # just pull the Mongo image
+    image: mongo:latest
+    networks:
+      - mongo-node-network
+    container_name: mongo-container
+    volumes:
+      - mongo-volume:/data/db
+    # start this AFTER node img
+    depends_on:
+      - node
+
+# connect both containers to this network
+networks:
+  mongo-node-network:
+    name: mongo-node-network
+
+# create named volume that all MongoDB interfaces share
+volumes:
+  mongo-volume:
+    name: mongo-volume
