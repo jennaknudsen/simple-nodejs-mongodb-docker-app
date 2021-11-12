@@ -7,7 +7,7 @@ storing information from the .csv file into a MongoDB database. An API is provid
 that allows the user to query the database at `localhost:3000/api`. In addition,
 a front-end webpage is provided to make API calls at `localhost:3000`. 
 
-In addition, this program has Docker 
+This app can be ran either directly on your machine or with Docker.
 
 This project was built using the following tool versions:
 * **Node.js** 
@@ -18,8 +18,8 @@ This project was built using the following tool versions:
   * MongoDB Community Server 5.0.3
   * MongoDB Node.js driver package 4.1.4
 * **Docker**
-  * Docker version 20.10.8
-  * Docker Compose version 1.29.2
+  * Docker 20.10.8
+  * Docker Compose 1.29.2
 
 ### Build instructions
 
