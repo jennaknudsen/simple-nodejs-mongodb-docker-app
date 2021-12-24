@@ -1,6 +1,6 @@
 ## Simple Node.js / Express.js / MongoDB / Docker Proof-of-concept
 
-<img src="https://raw.githubusercontent.com/jonasknudsen/simple-nodejs-mongodb-docker-app/main/screenshot.png" width="600" />
+<img src="https://raw.githubusercontent.com/jennaknudsen/simple-nodejs-mongodb-docker-app/main/screenshot.png" width="600" />
 
 This is a simple proof-of-concept app that demonstrates reading in a .csv file and 
 storing information from the .csv file into a MongoDB database. An API is provided
